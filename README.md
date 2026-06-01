@@ -1,16 +1,73 @@
-# React + Vite
+# SkillPath AI
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+SkillPath AI is an intelligent, modern web application that helps users discover the ideal career path based on their domain and specific skills. 
 
-Currently, two official plugins are available:
+This project uses a monorepo structure with an Express.js backend for authentication and a React frontend for an interactive, visually stunning user experience.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## ✨ Features
 
-## React Compiler
+- **AI-Powered Career Prediction**: Discover roles built for your unique skill set.
+- **Domain Selection**: Filter skills by specific domains (e.g., Software Engineering, Data Science).
+- **User Authentication**: Secure user registration and login functionality using JSON Web Tokens (JWT) and bcrypt.
+- **Modern UI**: A responsive, rich interface built with Tailwind CSS, glassmorphism aesthetics, and Framer Motion for micro-animations.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🚀 Tech Stack
 
-## Expanding the ESLint configuration
+### Frontend
+- **React.js** (via Vite)
+- **Tailwind CSS** (for styling and modern aesthetics)
+- **Framer Motion** (for smooth animations and transitions)
+- **React Router** (for dynamic routing)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Backend
+- **Node.js & Express.js**
+- **MongoDB & Mongoose** (Database)
+- **JWT & bcryptjs** (Authentication and Security)
+
+## 📁 Project Structure
+
+This project uses **npm workspaces** to manage the frontend and backend in a single repository.
+
+```
+skillpath-ai/
+├── backend/          # Express.js REST API & MongoDB connection
+├── frontend/         # React application (Vite)
+└── package.json      # Root package.json managing workspaces
+```
+
+## 🛠️ Getting Started
+
+Follow these steps to run the application locally on your machine.
+
+### Prerequisites
+- [Node.js](https://nodejs.org/) installed
+- [MongoDB](https://www.mongodb.com/) installed and running locally on your default port (`mongodb://127.0.0.1:27017`)
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/Ayush0201-web/skillpath-ai.git
+   cd skillpath-ai
+   ```
+
+2. Install dependencies for the entire workspace:
+   ```bash
+   npm install
+   ```
+   *(This will automatically install and link packages for both the `frontend` and `backend` directories).*
+
+### Running the App Locally
+
+To start **both** the frontend development server and the backend API server simultaneously, simply run this command from the root directory:
+
+```bash
+npm run dev
+```
+
+- The **frontend** will be available at `http://localhost:5173`
+- The **backend** API will be running on `http://localhost:5000`
+
+## 📝 License
+
+This project is open-source and available under the ISC License.
