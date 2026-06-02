@@ -1,38 +1,47 @@
 # SkillPath AI
 
-SkillPath AI is an intelligent, modern web application that helps users discover the ideal career path based on their domain and specific skills. 
+SkillPath AI is an intelligent, modern web application that helps users discover their ideal career path using Machine Learning (XGBoost) and Generative AI (Cloudflare Workers AI LLaMA 3.1).
 
-This project uses a monorepo structure with an Express.js backend for authentication and a React frontend for an interactive, visually stunning user experience.
+This project uses a monorepo structure with an Express.js backend for authentication and API routing, a Flask microservice for ML predictions, and a React frontend for an interactive, visually stunning user experience.
 
-## ✨ Features
+## ✨ Key Features
 
-- **AI-Powered Career Prediction**: Discover roles built for your unique skill set.
-- **Domain Selection**: Filter skills by specific domains (e.g., Software Engineering, Data Science).
+- **AI-Powered Career Prediction**: Discover roles built for your unique skill set using a custom-trained XGBoost model with 94.9% accuracy.
+- **Generative AI Action Plans**: Integration with Cloudflare Workers AI (LLaMA 3.1) to generate personalized, deeply contextual roadmaps based on your skill gaps.
+- **Detailed Assessment**: Comprehensive 0-10 sliders to rate soft skills (Leadership, Teamwork) and domain-specific technical skills (e.g., Python, C++, AutoCAD).
+- **Assessment History**: Track your progress over time with a historical dashboard storing all your previous assessments in MongoDB.
+- **Modern UI/UX**: A highly responsive, premium interface built with Tailwind CSS, glassmorphism aesthetics, dynamic themes, and Framer Motion for smooth micro-animations.
 - **User Authentication**: Secure user registration and login functionality using JSON Web Tokens (JWT) and bcrypt.
-- **Modern UI**: A responsive, rich interface built with Tailwind CSS, glassmorphism aesthetics, and Framer Motion for micro-animations.
 
 ## 🚀 Tech Stack
 
 ### Frontend
 - **React.js** (via Vite)
 - **Tailwind CSS** (for styling and modern aesthetics)
-- **Framer Motion** (for smooth animations and transitions)
-- **React Router** (for dynamic routing)
+- **Framer Motion** (for animations and transitions)
+- **Lucide React** (for crisp iconography)
 
-### Backend
+### Backend (Node.js)
 - **Node.js & Express.js**
 - **MongoDB & Mongoose** (Database)
 - **JWT & bcryptjs** (Authentication and Security)
+- **Cloudflare Workers AI API** (Generative summaries)
+
+### Machine Learning Service (Python)
+- **Flask** (Microservice API)
+- **Pandas & Scikit-learn** (Data preprocessing)
+- **XGBoost** (Core classification model)
 
 ## 📁 Project Structure
 
-This project uses **npm workspaces** to manage the frontend and backend in a single repository.
+This project uses **npm workspaces** to manage the frontend and backend in a single repository, alongside a dedicated Python ML service.
 
 ```
 skillpath-ai/
-├── backend/          # Express.js REST API & MongoDB connection
+├── backend/          # Node.js/Express.js REST API & MongoDB connection
 ├── frontend/         # React application (Vite)
-└── package.json      # Root package.json managing workspaces
+├── ml_service/       # Python Flask ML prediction microservice
+└── package.json      # Root package.json managing npm workspaces
 ```
 
 ## 🛠️ Getting Started
@@ -41,7 +50,8 @@ Follow these steps to run the application locally on your machine.
 
 ### Prerequisites
 - [Node.js](https://nodejs.org/) installed
-- [MongoDB](https://www.mongodb.com/) installed and running locally on your default port (`mongodb://127.0.0.1:27017`)
+- [Python 3.8+](https://www.python.org/) installed
+- [MongoDB](https://www.mongodb.com/) installed and running locally (`mongodb://127.0.0.1:27017`)
 
 ### Installation
 
@@ -51,22 +61,43 @@ Follow these steps to run the application locally on your machine.
    cd skillpath-ai
    ```
 
-2. Install dependencies for the entire workspace:
+2. Install Node.js dependencies for the entire workspace:
    ```bash
    npm install
    ```
-   *(This will automatically install and link packages for both the `frontend` and `backend` directories).*
+
+3. Set up the Python ML Service:
+   ```bash
+   cd ml_service
+   python -m venv venv
+   # On Windows:
+   venv\Scripts\activate
+   # On Mac/Linux:
+   source venv/bin/activate
+   pip install -r requirements.txt
+   cd ..
+   ```
 
 ### Running the App Locally
 
-To start **both** the frontend development server and the backend API server simultaneously, simply run this command from the root directory:
+You will need two terminal windows to run both the full-stack app and the ML service.
 
+**Terminal 1: Start the Python ML Service**
 ```bash
+cd ml_service
+# Activate venv if not already active
+venv\Scripts\activate
+python app.py
+```
+*(Runs on port 5001)*
+
+**Terminal 2: Start the Web App**
+```bash
+# In the root skillpath-ai directory
 npm run dev
 ```
-
 - The **frontend** will be available at `http://localhost:5173`
-- The **backend** API will be running on `http://localhost:5000`
+- The **Node backend** API will be running on `http://localhost:5000`
 
 ## 📝 License
 

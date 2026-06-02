@@ -1,89 +1,55 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Users, Code, Award, Sparkles } from 'lucide-react';
 
 export default function AboutPage() {
   return (
-    <div className="max-w-4xl mx-auto p-6 pb-24 min-h-screen">
+    <div className="flex-grow py-16 px-6 max-w-6xl mx-auto w-full relative">
+      <div className="absolute top-[-10%] right-[-10%] w-[40%] h-[40%] bg-[var(--brand-blue)] rounded-full mix-blend-multiply filter blur-[150px] opacity-10 pointer-events-none"></div>
+
       <motion.div 
-        className="text-center mb-16 mt-8"
+        className="text-center mb-16"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
       >
-        <h2 className="text-4xl font-bold text-[var(--text)] mb-4">About SkillPath AI</h2>
-        <p className="text-xl text-[var(--text-muted)]">Building the future of career guidance</p>
+        <h1 className="text-5xl font-extrabold text-[var(--text)] font-heading mb-6">About <span className="text-gradient">SkillPath AI</span></h1>
+        <p className="text-xl text-[var(--text-muted)] max-w-3xl mx-auto leading-relaxed">
+          We are a team of passionate technologists dedicated to bridging the gap between talent and opportunity through advanced artificial intelligence.
+        </p>
       </motion.div>
 
-      <motion.section 
-        className="mb-12 bg-[var(--surface)] p-8 rounded-2xl border border-[var(--border)]"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.2 }}
-      >
-        <h3 className="text-2xl font-bold mb-4 text-[var(--accent-light)]">Project Overview</h3>
-        <p className="text-[var(--text)] leading-relaxed mb-4">
-          SkillPath AI is a modern web application designed to help students discover the career paths they are best suited for. By analyzing academic performance, technical skills, and soft skills, our AI engine predicts the top career matches and provides a tailored roadmap for success.
-        </p>
-        <p className="text-[var(--text)] leading-relaxed">
-          Powered by Claude AI (claude-sonnet-4-20250514), the platform evaluates complex skill profiles against industry requirements across 4 major domains, offering insights into 28 specialized career roles.
-        </p>
-      </motion.section>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-20">
+        <motion.div 
+          className="glass p-10 rounded-3xl border border-[var(--border)]"
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.1 }}
+        >
+          <div className="w-16 h-16 bg-[rgba(10,37,64,0.1)] text-[var(--brand-blue)] rounded-2xl flex items-center justify-center mb-6">
+            <Sparkles size={32} />
+          </div>
+          <h2 className="text-3xl font-bold text-[var(--text)] font-heading mb-4">Our Mission</h2>
+          <p className="text-[var(--text-muted)] text-lg leading-relaxed">
+            To empower students and professionals by providing highly accurate, data-driven career predictions and actionable learning paths using state-of-the-art machine learning models.
+          </p>
+        </motion.div>
 
-      <motion.section 
-        className="mb-12"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.3 }}
-      >
-        <h3 className="text-2xl font-bold mb-6 text-center">How It Works</h3>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="bg-[var(--surface)] p-6 rounded-xl text-center border border-[var(--border)] relative">
-            <div className="w-12 h-12 bg-[var(--accent)] text-white rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">1</div>
-            <h4 className="text-lg font-bold mb-2">Select Domain</h4>
-            <p className="text-sm text-[var(--text-muted)]">Choose your field of study from our 4 primary domains.</p>
+        <motion.div 
+          className="glass p-10 rounded-3xl border border-[var(--border)]"
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.2 }}
+        >
+          <div className="w-16 h-16 bg-[rgba(16,185,129,0.1)] text-[var(--brand-green)] rounded-2xl flex items-center justify-center mb-6">
+            <Code size={32} />
           </div>
-          <div className="bg-[var(--surface)] p-6 rounded-xl text-center border border-[var(--border)] relative">
-            <div className="w-12 h-12 bg-[var(--accent)] text-white rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">2</div>
-            <h4 className="text-lg font-bold mb-2">Input Skills</h4>
-            <p className="text-sm text-[var(--text-muted)]">Provide your academic details and rate your technical & soft skills.</p>
-          </div>
-          <div className="bg-[var(--surface)] p-6 rounded-xl text-center border border-[var(--border)] relative">
-            <div className="w-12 h-12 bg-[var(--accent)] text-white rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">3</div>
-            <h4 className="text-lg font-bold mb-2">Get Predictions</h4>
-            <p className="text-sm text-[var(--text-muted)]">Receive AI-driven career matches, skill gap analysis, and course recommendations.</p>
-          </div>
-        </div>
-      </motion.section>
+          <h2 className="text-3xl font-bold text-[var(--text)] font-heading mb-4">Our Technology</h2>
+          <p className="text-[var(--text-muted)] text-lg leading-relaxed">
+            We leverage a custom-trained XGBoost model with 94.9% accuracy, combined with Cloudflare Workers AI edge networks, to deliver instantaneous and deeply personalized career insights.
+          </p>
+        </motion.div>
+      </div>
 
-      <motion.section 
-        className="grid grid-cols-1 md:grid-cols-2 gap-8"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.4 }}
-      >
-        <div className="bg-[var(--surface)] p-8 rounded-2xl border border-[var(--border)]">
-          <h3 className="text-xl font-bold mb-4 text-[var(--accent-light)]">Dataset & Scope</h3>
-          <ul className="space-y-3 text-[var(--text)]">
-            <li className="flex justify-between border-b border-[var(--border)] pb-2"><span>Analyzed Student Profiles</span> <strong className="text-[var(--success)]">5000+</strong></li>
-            <li className="flex justify-between border-b border-[var(--border)] pb-2"><span>Engineering & Comm. Domains</span> <strong className="text-[var(--success)]">4</strong></li>
-            <li className="flex justify-between border-b border-[var(--border)] pb-2"><span>Unique Career Roles</span> <strong className="text-[var(--success)]">28</strong></li>
-            <li className="flex justify-between pb-2"><span>Technical Skills Tracked</span> <strong className="text-[var(--success)]">48</strong></li>
-          </ul>
-        </div>
-
-        <div className="bg-[var(--surface)] p-8 rounded-2xl border border-[var(--border)]">
-          <h3 className="text-xl font-bold mb-4 text-[var(--accent-light)]">Tech Stack</h3>
-          <div className="flex flex-wrap gap-2">
-            <span className="bg-[var(--primary)] px-3 py-1 rounded-md text-sm border border-[var(--border)]">React 18</span>
-            <span className="bg-[var(--primary)] px-3 py-1 rounded-md text-sm border border-[var(--border)]">Vite</span>
-            <span className="bg-[var(--primary)] px-3 py-1 rounded-md text-sm border border-[var(--border)]">Tailwind CSS v4</span>
-            <span className="bg-[var(--primary)] px-3 py-1 rounded-md text-sm border border-[var(--border)]">React Router v6</span>
-            <span className="bg-[var(--primary)] px-3 py-1 rounded-md text-sm border border-[var(--border)]">Framer Motion</span>
-            <span className="bg-[var(--primary)] px-3 py-1 rounded-md text-sm border border-[var(--border)]">Recharts</span>
-            <span className="bg-[var(--primary)] px-3 py-1 rounded-md text-sm border border-[var(--border)]">Lucide React</span>
-            <span className="bg-[var(--primary)] px-3 py-1 rounded-md text-sm border border-[var(--border)] border-[var(--accent)] text-[var(--accent-light)]">Claude AI API</span>
-          </div>
-        </div>
-      </motion.section>
     </div>
   );
 }

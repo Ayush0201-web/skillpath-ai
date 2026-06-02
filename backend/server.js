@@ -2,8 +2,9 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const dotenv = require('dotenv');
+const path = require('path');
 
-dotenv.config();
+dotenv.config({ path: path.join(__dirname, '.env') });
 
 const app = express();
 
@@ -18,6 +19,7 @@ mongoose.connect(process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/skillpath')
 
 // Routes
 app.use('/api/auth', require('./routes/auth'));
+app.use('/api/predict', require('./routes/predict'));
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
